@@ -32,7 +32,7 @@ func _physics_process(_delta):
 	# @temp: Show inventory logic here for now?
 	if Input.is_action_just_pressed('toggleInventory'):
 		isInventoryVisible = !isInventoryVisible
-		inventoryUI.get_node('Panel').visible = isInventoryVisible
+		inventoryUI.get_node('BG').visible = isInventoryVisible
 		#if isInventoryVisible:
 		#get_parent().get_node('Inventory/Panel').visible = true
 
