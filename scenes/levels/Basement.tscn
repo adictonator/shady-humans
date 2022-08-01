@@ -222,4 +222,3 @@ shape = SubResource( 1 )
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 
 [node name="Objectives" parent="." instance=ExtResource( 8 )]
-margin_right = 0.0

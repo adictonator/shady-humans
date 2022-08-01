@@ -14,7 +14,7 @@ var Items = {
 }
 
 onready var objectiveList = $M/V/List
-
+var panelVisible = false
 func _ready() -> void:
 	EventBus.connect('objectiveCompleted', self, 'removeObjective')
 
@@ -28,8 +28,12 @@ func _ready() -> void:
 
 func _process(delta):
 	if Input.is_action_just_pressed('toggleObjectives'):
-		print('pirnnnttt')
-		$AnimationPlayer.play('slide')
+		if ! panelVisible:
+			panelVisible = true
+			$AnimationPlayer.play('slide')
+		else:
+			$AnimationPlayer.play_backwards('slide')
+			panelVisible = false
 
 func removeObjective(objectiveID):
 	var item = objectiveList.find_node(objectiveID, true, false)
