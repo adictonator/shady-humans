@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/underworld_load-atlas-32x32.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/underworld_load-extra-32x32.png" type="Texture" id=4]
 [ext_resource path="res://scenes/world/objects/GlassShard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ui/Inventory.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ui/Objectives.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -216,7 +217,9 @@ scale = Vector2( 14.52, 2.52 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1.13636, 8.73014 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
+
+[node name="Objectives" parent="." instance=ExtResource( 8 )]
+margin_right = 0.0
