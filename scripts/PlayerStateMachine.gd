@@ -10,6 +10,5 @@ func _ready():
 	setState(states.crawl)
 
 func _stateLogic(delta):
-	parent.applyGravity()
 	#parent.crawl()
 	pass
