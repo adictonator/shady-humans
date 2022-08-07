@@ -3,7 +3,7 @@ class_name InteractableObject
 
 var isInteracting :bool = false
 
-onready var inventory = get_viewport().get_node('Inventory')
+onready var inventory = get_viewport().find_node('Inventory')
 onready var interactionPopup = preload('res://scenes/ui/InteractionPopup.tscn').instance()
 
 func _process(delta):
