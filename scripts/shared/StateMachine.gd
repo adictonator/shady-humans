@@ -21,7 +21,6 @@ func _getTransition(_delta):
 	pass
 
 func _enterState(_newState, _oldState):
-	print('we are now:', _newState)
 	pass
 
 func _exitState(_oldState, _newState):
