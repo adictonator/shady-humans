@@ -5,5 +5,8 @@
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Gyananakashu" parent="." instance=ExtResource( 1 )]

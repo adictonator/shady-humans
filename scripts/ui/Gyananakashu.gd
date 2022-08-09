@@ -2,18 +2,10 @@ extends Control
 
 onready var HUD = get_parent()
 var shdrd = preload('res://assets/shaders/shockwave.shader')
-var shf = preload('res://assets/shaders/colorOutline.shader')
-onready var lmao = $"../%NPC"
-onready var animationPlayer := $AnimationPlayer
 
 func showEffect():
 	_createEffect()
-	_showNPCColors()
-
-func _showNPCColors():
-	lmao.get_node('Sprite').material = ShaderMaterial.new()
-	lmao.get_node('Sprite').material.shader = shf
-	lmao.get_node('Sprite').material.set_shader_param('rainbow', true)
+	EventBus.emit_signal('showNPCNature')
 
 func _createEffect():
 	var rect = ColorRect.new()
