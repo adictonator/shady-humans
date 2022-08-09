@@ -1,15 +1,17 @@
 extends KinematicBody2D
+class_name Player
 
+enum STATE {CRAWL, WALK, RUN, IDLE, CLIMB}
 export var MAX_SPEED := 50
 export var ACCELERATION := 0.1
 export var FRICTION := 0.1
 
+onready var levelRoot = get_parent()
 onready var playerAnimation = $AnimatedSprite
+onready var inventoryUI = get_parent().get_node('Inventory')
+onready var accuracyMeter = preload('res://scenes/ui/templates/AccuracyMeter.tscn')
 
 var velocity: Vector2 = Vector2.ZERO
-enum STATE {CRAWL, WALK, RUN, IDLE, CLIMB}
-
-onready var inventoryUI = get_parent().get_node('Inventory')
 var isInventoryVisible = false
 
 # Make crawl movement logic.
@@ -17,37 +19,6 @@ func crawl():
 	MAX_SPEED = 10
 	ACCELERATION = 2
 	FRICTION = 2
-
-#func _physics_process(_delta):
-
-#	# @temp: Show inventory logic here for now?
-#	if Input.is_action_just_pressed('toggleInventory'):
-#		isInventoryVisible = !isInventoryVisible
-#		inventoryUI.get_node('BG').visible = isInventoryVisible
-#		#if isInventoryVisible:
-#		#get_parent().get_node('Inventory/Panel').visible = true
-
-#	var input = Vector2.ZERO
-#	input.x = Input.get_action_strength('move_right') - Input.get_action_strength('move_left')
-#	input.y = Input.get_action_strength('move_up') - Input.get_action_strength('move_down')
-
-#	if input.x == 0 && input.y == 0:
-#		applyFriction()
-#		playerAnimation.animation = 'idle'
-
-#	if input.x > 0:
-#		playerAnimation.animation = 'walkRight'
-#	else:
-#		playerAnimation.animation = 'walkLeft'
-
-#	if input.y > 0:
-#		playerAnimation.animation = 'walkRight'
-#	else:
-#		playerAnimation.animation = 'walkLeft'
-
-#	applyAcceleration(input)
-
-#	velocity = move_and_slide(velocity, Vector2.UP)
 
 func getInput():
 	var input = Vector2.ZERO
@@ -66,7 +37,7 @@ func getInput():
 		playerAnimation.animation = 'idle'
 	return input
 
-func _physics_process(_delta):
+func _handleMovement():
 	var direction = getInput()
 	if direction.length() > 0:
 		applyAcceleration(direction)
@@ -74,6 +45,13 @@ func _physics_process(_delta):
 		applyFriction()
 
 	velocity = move_and_slide(velocity)
+
+func _physics_process(_delta):
+	_handleMovement()
+
+func _showAccuracyMeter():
+	# Make it a child of the "power" node in HUD
+	$"%HUD/Gyananakashu".add_child(accuracyMeter.instance())
 
 func applyFriction():
 	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
