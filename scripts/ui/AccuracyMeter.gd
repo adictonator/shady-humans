@@ -20,9 +20,8 @@ func _process(_delta):
 	var curPos = cursor.rect_position.x
 
 	if Input.is_action_just_pressed('usePower'):
-		pp.showEffect()
+		pp.showEffect(curPos >= hitAreaPos && curPos <= hitAreaSize)
 		queue_free()
-	#if curPos >= hitAreaPos && curPos <= hitAreaSize:
 
 func randomizeHitAreaPos():
 	var g = width - hitArea.rect_size.x

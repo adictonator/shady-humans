@@ -10,17 +10,16 @@ enum JOBS {
 	combat,
 }
 
-onready var shader = preload('res://assets/shaders/colorOutline.shader')
+onready var shader = preload('res://assets/shaders/glowingOutline.shader')
 
 export(JOBS) var job = JOBS.none
 export(NATURE_KIND) var nature = NATURE_KIND.good
 export var texture : StreamTexture
 
 var dialogVariant = 1
-var borderMixed
+var borderMixed = Color.orange
 var borderSolid
 var spriteNode
-var activeNPC
 
 func _ready():
 	spriteNode = Sprite.new()
@@ -53,14 +52,21 @@ func _startInteraction():
 	# testing variables in dialog.
 	Dialogic.set_variable('variant', dialogVariant)
 	add_child(dialog)
+
+	# warning-ignore:return_value_discarded
 	EventBus.connect('showNPCNature', self, 'showNature')
 
-func showNature() -> void:
+func showNature(isAccurate: bool) -> void:
+	print('is acc', isAccurate)
+
+	var borderType = borderSolid if isAccurate else borderMixed
+
 	spriteNode.material = ShaderMaterial.new()
 	spriteNode.material.shader = shader
-	spriteNode.material.set_shader_param('width', 1)
-	spriteNode.material.set_shader_param('color', borderSolid)
+	spriteNode.material.set_shader_param('width', 15)
+	spriteNode.material.set_shader_param('width_speed', 2)
+	spriteNode.material.set_shader_param('outline_color', borderType)
 	EventBus.disconnect('showNPCNature', self, 'showNature')
 
-func _on_Area2D_body_entered(body:Node):
+func _on_Area2D_body_entered(_body:Node):
 	_startInteraction()

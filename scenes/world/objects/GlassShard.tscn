@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/GlassShard.gd" type="Script" id=1]
 [ext_resource path="res://assets/dummy.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -38,6 +40,7 @@ shader_param/width = 1.065
 shader_param/outline_color = null
 
 [node name="GlassShard" type="Area2D"]
+material = SubResource( 4 )
 monitorable = false
 script = ExtResource( 1 )
 

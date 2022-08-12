@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/underworld_load-atlas-32x32.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://scenes/ui/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/ui/Objectives.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scripts/Basement.gd" type="Script" id=9]
+[ext_resource path="res://scenes/characters/npc/NPC.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/slot-texture.png" type="Texture" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -191,6 +193,9 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="Basement" type="Node2D"]
 script = ExtResource( 9 )
 
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+unique_name_in_owner = true
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
 cell_size = Vector2( 32, 32 )
@@ -204,15 +209,27 @@ show_collision = true
 format = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 291, 247 )
+position = Vector2( 363, 175 )
 
 [node name="GlassShard" parent="." instance=ExtResource( 5 )]
-position = Vector2( 262, 274 )
+position = Vector2( 888, 288 )
 
 [node name="Inventory" parent="." instance=ExtResource( 6 )]
 
 [node name="Objectives" parent="." instance=ExtResource( 8 )]
 
-[node name="HUD" parent="." instance=ExtResource( 7 )]
-
 [node name="NPCs" type="Node" parent="."]
+
+[node name="NPC" parent="NPCs" instance=ExtResource( 10 )]
+position = Vector2( 324, 253 )
+job = 1
+texture = ExtResource( 11 )
+
+[node name="NPC2" parent="NPCs" instance=ExtResource( 10 )]
+position = Vector2( 417, 134 )
+job = 2
+
+[node name="NPC3" parent="NPCs" instance=ExtResource( 10 )]
+position = Vector2( 544, 156 )
+job = 4
+nature = 1
