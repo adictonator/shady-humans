@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-onready var startButton = $"%StartButton"
-onready var quitButton = $"%QuitButton"
+@onready var startButton = $"%StartButton"
+@onready var quitButton = $"%QuitButton"
 
 func _ready():
 	startButton.grab_focus()

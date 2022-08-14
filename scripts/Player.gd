@@ -1,18 +1,19 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Player
 
 enum STATE {CRAWL, WALK, RUN, IDLE, CLIMB}
-export var MAX_SPEED := 50
-export var ACCELERATION := 0.1
-export var FRICTION := 0.1
+@export var MAX_SPEED: float = 50.0
+@export var ACCELERATION: float = 0.1
+@export var FRICTION: float = 0.1
+@export var color: Color
 
-onready var levelRoot = get_parent()
-onready var playerAnimation = $AnimatedSprite
-onready var inventoryUI = get_parent().get_node('Inventory')
-onready var accuracyMeter = preload('res://scenes/ui/templates/AccuracyMeter.tscn')
+@onready var levelRoot = get_parent()
+@onready var playerAnimation = $AnimatedSprite
+@onready var inventoryUI = get_parent().get_node('Inventory')
+@onready var accuracyMeter = preload('res://scenes/ui/templates/AccuracyMeter.tscn')
 
-var velocity: Vector2 = Vector2.ZERO
-var isInventoryVisible = false
+#var velocity: Vector2 = Vector2.ZERO
+var isInventoryVisible: bool = false
 
 # Make crawl movement logic.
 func crawl():
@@ -44,14 +45,15 @@ func _handleMovement():
 	else:
 		applyFriction()
 
-	velocity = move_and_slide(velocity)
+	#velocity = move_and_slide(velocity)
+	move_and_slide()
 
 func _physics_process(_delta):
 	_handleMovement()
 
 func _showAccuracyMeter():
 	# Make it a child of the "power" node in HUD
-	$"%HUD/Gyananakashu".add_child(accuracyMeter.instance())
+	$"%HUD/Gyananakashu".add_child(accuracyMeter.instantiate())
 
 func applyFriction():
 	velocity = lerp(velocity, Vector2.ZERO, FRICTION)

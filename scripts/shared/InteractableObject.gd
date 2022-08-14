@@ -3,8 +3,8 @@ class_name InteractableObject
 
 var isInteracting :bool = false
 
-onready var inventory = get_viewport().find_node('Inventory')
-onready var interactionPopup = preload('res://scenes/ui/InteractionPopup.tscn').instance()
+#@onready var inventory = get_viewport().find_node('Inventory')
+@onready var interactionPopup = preload('res://scenes/ui/InteractionPopup.tscn').instantiate()
 
 func _process(delta):
 	if isInteracting && Input.is_action_just_pressed('interact'):
@@ -27,7 +27,7 @@ func _moveItemToInventory(item):
 	self.queue_free()
 
 func _displayInteractionPopup() -> void:
-	interactionPopup.rect_position.y = -30
+	interactionPopup.position.y = -30
 	add_child(interactionPopup)
 	interactionPopup.get_node('AnimationPlayer').play('fadeIn')
 	isInteracting = true

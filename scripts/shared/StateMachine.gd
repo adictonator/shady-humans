@@ -1,10 +1,9 @@
-extends Node
 class_name StateMachine
 
 var states = {}
 var state = null setget setState
 var prevState = null
-onready var parent = get_parent()
+@onready var parent = get_parent()
 
 func _process(delta):
 	if state != null:

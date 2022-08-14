@@ -1,7 +1,6 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name NPC
 
-enum NATURE_KIND { good, bad }
 enum JOBS {
 	none,
 	trade,
@@ -9,32 +8,32 @@ enum JOBS {
 	quest,
 	combat,
 }
+var shader = 'res://assets/shaders/glowingOutline.shader'
 
-onready var shader = preload('res://assets/shaders/glowingOutline.shader')
-
-export(JOBS) var job = JOBS.none
-export(NATURE_KIND) var nature = NATURE_KIND.good
-export var texture : StreamTexture
+@export var job: JOBS = JOBS.none
+@export_enum('Good', 'Bad') var nature
+@export var texture: CompressedTexture2D
 
 var dialogVariant = 1
-var borderMixed = Color.orange
+var borderMixed
 var borderSolid
 var spriteNode
 
 func _ready():
-	spriteNode = Sprite.new()
+	spriteNode = Sprite2D.new()
 	spriteNode.texture = texture
 	add_child(spriteNode)
+	pass
 
-	if nature == NATURE_KIND.bad:
-		borderSolid = Color.red
-	else:
-		borderSolid = Color.green
+	#if nature == NATURE_KIND.bad:
+	#	borderSolid = Color.red
+	#else:
+	#	borderSolid = Color.green
 
-	_defineJobs()
+	#_defineJobs()
 
-	# @test-code
-	$Label.set_text(str(NATURE_KIND.keys()[nature] + ' : ' + JOBS.keys()[job]))
+	## @test-code
+	#$Label.set_text(str(NATURE_KIND.keys()[nature] + ' : ' + JOBS.keys()[job]))
 
 func _defineJobs():
 	match job:
@@ -48,13 +47,14 @@ func _gamer():
 	pass
 
 func _startInteraction():
-	var dialog = Dialogic.start('what')
-	# testing variables in dialog.
-	Dialogic.set_variable('variant', dialogVariant)
-	add_child(dialog)
+	pass
+	#var dialog = Dialogic.start('what')
+	## testing variables in dialog.
+	#Dialogic.set_variable('variant', dialogVariant)
+	#add_child(dialog)
 
 	# warning-ignore:return_value_discarded
-	EventBus.connect('showNPCNature', self, 'showNature')
+	#EventBus.connect('showNPCNature', self, 'showNature')
 
 func showNature(isAccurate: bool) -> void:
 	print('is acc', isAccurate)
@@ -66,7 +66,8 @@ func showNature(isAccurate: bool) -> void:
 	spriteNode.material.set_shader_param('width', 15)
 	spriteNode.material.set_shader_param('width_speed', 2)
 	spriteNode.material.set_shader_param('outline_color', borderType)
-	EventBus.disconnect('showNPCNature', self, 'showNature')
+	#EventBus.disconnect('showNPCNature', self, 'showNature')
 
 func _on_Area2D_body_entered(_body:Node):
-	_startInteraction()
+	pass
+	#_startInteraction()

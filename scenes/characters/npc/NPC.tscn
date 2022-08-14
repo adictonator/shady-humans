@@ -1,31 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cit25xtfjgyt2"]
 
-[ext_resource path="res://scripts/characters/npc/NPC.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://scripts/characters/npc/NPC.gd" id="1"]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id="1"]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 18.5, 19 )
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(37, 38)
 
-[node name="NPC" type="KinematicBody2D"]
+[node name="NPC" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource( 1 )
+script = ExtResource("1")
+job = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="Label" type="Label" parent="."]
-margin_left = -19.0
-margin_top = -31.0
-margin_right = 21.0
-margin_bottom = -17.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.5, 1 )
-shape = SubResource( 2 )
+position = Vector2(-0.5, 1)
+shape = SubResource("2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

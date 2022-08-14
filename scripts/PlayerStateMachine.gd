@@ -1,4 +1,4 @@
-extends StateMachine
+extends "shared/StateMachine.gd"
 
 func _ready():
 	addState('crawl')

@@ -1,5 +1,8 @@
 extends InteractableObject
 
+func _ready():
+	print(get_class())
+
 func _onBodyEntered(body:Node):
 	# Check if the body is player.
 	# Or just use layers and mask?

@@ -14,11 +14,11 @@ const VALID_KEYS = {
 		"code": KEY_RIGHT
 	}
 }
-onready var progressBar = $ProgressBar
-onready var keySymbol = $Key/P/Code
-onready var keyTimer = $Key
-onready var keyTimerValue = $Key.value
-onready var timer = $Key/Timer
+@onready var progressBar = $ProgressBar
+@onready var keySymbol = $Key/P/Code
+@onready var keyTimer = $Key
+@onready var keyTimerValue = $Key.value
+@onready var timer = $Key/Timer
 
 var rng = RandomNumberGenerator.new()
 var waitTime

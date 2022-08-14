@@ -13,16 +13,16 @@ var Items = {
 	}
 }
 
-onready var objectiveList = $P/M/V/List
-onready var objectiveItemTemplate = preload('res://scenes/ui/templates/ObjectiveItem.tscn')
+@onready var objectiveList = $P/M/V/List
+@onready var objectiveItemTemplate = preload('res://scenes/ui/templates/ObjectiveItem.tscn')
 
 var panelVisible = false
 func _ready() -> void:
-	EventBus.connect('objectiveCompleted', self, 'removeObjective')
+	EventBus.objectiveCompleted.connect(removeObjective)
 
 	for itemKey in Items:
 		var objectiveData = Items[itemKey]
-		var label = objectiveItemTemplate.instance()
+		var label = objectiveItemTemplate.instantiate()
 		# It's important to name the label as objective key for reference.
 		label.name = itemKey
 		label.set_text(objectiveData.title)
