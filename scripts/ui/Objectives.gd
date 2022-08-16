@@ -15,6 +15,7 @@ var Items = {
 
 @onready var objectiveList = $P/M/V/List
 @onready var objectiveItemTemplate = preload('res://scenes/ui/templates/ObjectiveItem.tscn')
+@onready var animationPlayer: AnimationPlayer = $P/AnimationPlayer
 
 var panelVisible = false
 func _ready() -> void:
@@ -32,9 +33,9 @@ func _process(delta):
 	if Input.is_action_just_pressed('toggleObjectives'):
 		if ! panelVisible:
 			panelVisible = true
-			$AnimationPlayer.play('slide')
+			animationPlayer.play('slide')
 		else:
-			$AnimationPlayer.play_backwards('slide')
+			animationPlayer.play_backwards('slide')
 			panelVisible = false
 
 func removeObjective(objectiveID):

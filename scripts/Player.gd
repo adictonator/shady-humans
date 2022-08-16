@@ -9,7 +9,6 @@ enum STATE {CRAWL, WALK, RUN, IDLE, CLIMB}
 
 @onready var levelRoot = get_parent()
 @onready var playerAnimation = $AnimatedSprite
-@onready var inventoryUI = get_parent().get_node('Inventory')
 @onready var accuracyMeter = preload('res://scenes/ui/templates/AccuracyMeter.tscn')
 
 #var velocity: Vector2 = Vector2.ZERO

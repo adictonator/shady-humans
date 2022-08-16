@@ -8,10 +8,14 @@ enum JOBS {
 	quest,
 	combat,
 }
+enum NATURE {
+	good,
+	bad
+}
 var shader = 'res://assets/shaders/glowingOutline.shader'
 
 @export var job: JOBS = JOBS.none
-@export_enum('Good', 'Bad') var nature
+@export var nature: NATURE = NATURE.good
 @export var texture: CompressedTexture2D
 
 var dialogVariant = 1
@@ -23,17 +27,16 @@ func _ready():
 	spriteNode = Sprite2D.new()
 	spriteNode.texture = texture
 	add_child(spriteNode)
-	pass
 
-	#if nature == NATURE_KIND.bad:
-	#	borderSolid = Color.red
-	#else:
-	#	borderSolid = Color.green
+	if nature == NATURE.bad:
+		borderSolid =  Color.RED
+	else:
+		borderSolid =  Color.DARK_GREEN
 
-	#_defineJobs()
+	_defineJobs()
 
-	## @test-code
-	#$Label.set_text(str(NATURE_KIND.keys()[nature] + ' : ' + JOBS.keys()[job]))
+	# @test-code
+	$Label.set_text(str(nature + ' : ' + JOBS.keys()[job]))
 
 func _defineJobs():
 	match job:

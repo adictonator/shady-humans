@@ -10,7 +10,6 @@ size = Vector2(37, 38)
 [node name="NPC" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1")
-job = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -22,7 +21,6 @@ collision_layer = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 1)
 shape = SubResource("2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

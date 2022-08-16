@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://uatltr8deyyc"]
+[gd_scene load_steps=6 format=3 uid="uid://uatltr8deyyc"]
 
 [ext_resource type="Script" path="res://scripts/screens/MainScreen.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://djtnvdwkn0n88" path="res://assets/fonts/title-font.TTF" id="2_b05p3"]
+[ext_resource type="FontFile" uid="uid://cc6ex0r4l0yts" path="res://assets/fonts/text-font.TTF" id="3_q4waq"]
+
+[sub_resource type="SystemFont" id="SystemFont_14bh7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrglm"]
 
 [node name="MainScreen" type="CanvasLayer"]
 script = ExtResource("1")
@@ -10,65 +16,106 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.0352941, 0.0392157, 0.129412, 0.627451)
 
+[node name="VersionInfo" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -15.0
+offset_right = -969.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.294118, 0.294118, 0.294118, 1)
+theme_override_fonts/font = SubResource("SystemFont_14bh7")
+theme_override_font_sizes/font_size = 8
+text = "v0.1-ALPHA"
+
 [node name="M" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="M"]
-offset_right = 1024.0
-offset_bottom = 600.0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 1004.0
+offset_bottom = 550.0
 
 [node name="GameTitle" type="Label" parent="M/VBoxContainer"]
-offset_right = 1024.0
-offset_bottom = 26.0
+offset_right = 984.0
+offset_bottom = 179.0
 size_flags_vertical = 0
-text = "Shady Humans"
+theme_override_colors/font_color = Color(0.223529, 0.356863, 0.392157, 1)
+theme_override_colors/font_shadow_color = Color(0.647059, 0.788235, 0.792157, 1)
+theme_override_colors/font_outline_color = Color(0.905882, 0.964706, 0.94902, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_b05p3")
+theme_override_font_sizes/font_size = 150
+text = "sHAdY HumaNs"
+horizontal_alignment = 1
 
 [node name="ActionButtons" type="VBoxContainer" parent="M/VBoxContainer"]
-offset_left = 489.0
-offset_top = 30.0
+offset_left = 448.0
+offset_top = 265.0
 offset_right = 535.0
-offset_bottom = 96.0
+offset_bottom = 417.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 6
 alignment = 1
 
 [node name="StartButton" type="Button" parent="M/VBoxContainer/ActionButtons"]
 unique_name_in_owner = true
-offset_right = 46.0
-offset_bottom = 31.0
+offset_right = 87.0
+offset_bottom = 48.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.298039, 0.227451, 0.317647, 1)
+theme_override_colors/font_pressed_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_colors/font_hover_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_colors/font_focus_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_fonts/font = ExtResource("3_q4waq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yrglm")
 shortcut_in_tooltip = false
 text = "Start"
 flat = true
 
-[node name="SettingsButton" type="Button" parent="M/VBoxContainer/ActionButtons"]
+[node name="OptionsButton" type="Button" parent="M/VBoxContainer/ActionButtons"]
 unique_name_in_owner = true
-visible = false
+offset_top = 52.0
+offset_right = 87.0
+offset_bottom = 100.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.298039, 0.227451, 0.317647, 1)
+theme_override_colors/font_hover_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_colors/font_focus_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_fonts/font = ExtResource("3_q4waq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yrglm")
 shortcut_in_tooltip = false
 text = "Options"
 flat = true
 
 [node name="QuitButton" type="Button" parent="M/VBoxContainer/ActionButtons"]
 unique_name_in_owner = true
-offset_top = 35.0
-offset_right = 46.0
-offset_bottom = 66.0
+offset_top = 104.0
+offset_right = 87.0
+offset_bottom = 152.0
 mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.298039, 0.227451, 0.317647, 1)
+theme_override_colors/font_hover_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_colors/font_focus_color = Color(0.466667, 0.262745, 0.376471, 1)
+theme_override_fonts/font = ExtResource("3_q4waq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yrglm")
 shortcut_in_tooltip = false
 text = "Quit"
 flat = true
-
-[node name="VersionLabel" type="Label" parent="M/VBoxContainer"]
-offset_top = 100.0
-offset_right = 1024.0
-offset_bottom = 126.0
-size_flags_horizontal = 9
-size_flags_vertical = 8
-text = "0xffff"
 
 [connection signal="pressed" from="M/VBoxContainer/ActionButtons/StartButton" to="." method="_onStartButtonPressed"]
 [connection signal="pressed" from="M/VBoxContainer/ActionButtons/QuitButton" to="." method="_onQuitButtonPressed"]

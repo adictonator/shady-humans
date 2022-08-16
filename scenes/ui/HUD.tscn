@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0bm5rloxuvgc"]
+[gd_scene load_steps=5 format=3 uid="uid://b0bm5rloxuvgc"]
 
 [ext_resource type="PackedScene" uid="uid://dofyt7rc2je8x" path="res://scenes/ui/templates/Gyananakashu.tscn" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/HUD.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://7m85chokpw8k" path="res://scenes/ui/Objectives.tscn" id="3_qtgma"]
+[ext_resource type="PackedScene" uid="uid://dyyme8va1fuaa" path="res://scenes/ui/Inventory.tscn" id="4_1psaq"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("2")
 
 [node name="Gyananakashu" parent="." instance=ExtResource("1")]
+
+[node name="Objectives" parent="." instance=ExtResource("3_qtgma")]
+offset_right = -1024.0
+offset_bottom = -600.0
+
+[node name="Inventory" parent="." instance=ExtResource("4_1psaq")]

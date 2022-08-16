@@ -21,17 +21,32 @@ offset_right = 1024.0
 offset_bottom = 600.0
 
 [node name="Header" type="HBoxContainer" parent="BG/M/V"]
+offset_right = 1024.0
+offset_bottom = 26.0
 
 [node name="Label" type="Label" parent="BG/M/V/Header"]
+offset_right = 1024.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "Inventory"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="BG/M/V"]
+offset_top = 30.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="BG/M/V/ScrollContainer"]
+offset_right = 1024.0
+offset_bottom = 570.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
